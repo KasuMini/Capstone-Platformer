@@ -110,7 +110,7 @@
                     "name": "ImpulseR",
                     "type": "Value",
                     "id": "ba7483d5-e176-4497-9cad-f238a06f6197",
-                    "expectedControlType": "",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true,
@@ -506,10 +506,10 @@
                 {
                     "name": "",
                     "id": "eb099749-d7ee-439f-82b7-b6974a23faa8",
-                    "path": "",
+                    "path": "<Keyboard>/numpad7",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "ImpulseL",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -528,10 +528,10 @@
                 {
                     "name": "",
                     "id": "faf1e977-f134-41a3-be4d-12689e2ff580",
-                    "path": "",
+                    "path": "<Keyboard>/numpad9",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "ImpulseR",
                     "isComposite": false,
                     "isPartOfComposite": false
