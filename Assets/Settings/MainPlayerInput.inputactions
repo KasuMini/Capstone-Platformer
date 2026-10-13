@@ -1,0 +1,99 @@
+{
+    "version": 1,
+    "name": "MainPlayerInput",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "96fd430b-542d-41dc-85ef-a3eeb75c4647",
+            "actions": [
+                {
+                    "name": "Left Arm",
+                    "type": "Value",
+                    "id": "aa67aedf-e34f-4689-971f-9bc1044da61d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "RIght Arm",
+                    "type": "Value",
+                    "id": "af4d632c-660d-47cd-96db-25733c440d4b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "Left Trigger",
+                    "type": "Value",
+                    "id": "40c27149-80b6-4dbc-b28a-34aded3a9c24",
+                    "expectedControlType": "Axis",
+                    "processors": "AxisDeadzone",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "Right Trigger",
+                    "type": "Value",
+                    "id": "fb82641a-f8fe-484b-bad7-075f30d25387",
+                    "expectedControlType": "Axis",
+                    "processors": "AxisDeadzone",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c768e7ee-a2be-48ba-a119-15c93ccaf1c6",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Arm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96c6a956-6080-41ec-9617-7201a9c25a7c",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RIght Arm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "101685e8-9e7c-4770-b43c-9d736999116e",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbc13e74-e21b-413a-b8ff-bb98662b3bac",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
