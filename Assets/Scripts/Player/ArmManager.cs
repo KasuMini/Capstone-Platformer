@@ -12,6 +12,7 @@ public class ArmManager : MonoBehaviour
     [SerializeField] private Transform _rightArmPivot;
 
     [SerializeField] private ImpulseItem _rightArmItem;
+    [SerializeField] private ImpulseItem _leftArmItem;
 
 
     private void Awake()
@@ -19,7 +20,10 @@ public class ArmManager : MonoBehaviour
 
         _leftArmInput = _playerInput.actions.FindAction("Left Arm");
         _rightArmInput = _playerInput.actions.FindAction("Right Arm");
+        _rightArmItem.InitTriggerAction(_playerInput.actions.FindAction("Right Trigger"));
+        _leftArmItem.InitTriggerAction(_playerInput.actions.FindAction("Left Trigger"));
     }
+    /*
     private void OnEnable()
     {
         _playerInput.actions.FindAction("Left Trigger").performed += LeftArmTriggered;
@@ -32,6 +36,7 @@ public class ArmManager : MonoBehaviour
         _playerInput.actions.FindAction("Left Trigger").performed -= LeftArmTriggered;
         _playerInput.actions.FindAction("Right Trigger").performed -= RightArmTriggered;
     }
+    */
     private void Update()
     {
         //print(_leftArmInput.ReadValue<Vector2>());
@@ -52,6 +57,6 @@ public class ArmManager : MonoBehaviour
     //might be better just to pass in the input action when possessing item, so the item itself can control how it handles input
     public void RightArmTriggered(InputAction.CallbackContext context)
     {
-        _rightArmItem.InputTriggered(context.ReadValue<float>());
+        //_rightArmItem.InputTriggered(context.ReadValue<float>());
     }
 }
