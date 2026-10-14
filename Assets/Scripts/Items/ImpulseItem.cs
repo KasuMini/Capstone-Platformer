@@ -36,17 +36,18 @@ namespace Items.Andrew
 
         private void Impulse(InputAction.CallbackContext context)
         {
-            if(_ammo <= 0)
+            _ammo--;
+            if(_ammo < 0)
             {
                 _enumEvents[(int)CustomEvents.ImpulseFail]?.Invoke();
-                if(_ammo == 0)
-                {
-                    StartCoroutine(CoolDown());
-                }
                 return;
             }
+            if (_ammo == 0)
+            {
+                StartCoroutine(CoolDown());
+            }
             _enumEvents[(int)CustomEvents.ImpulseSuccess]?.Invoke();
-            _ammo--;
+            //_ammo--;
             _rb2D.linearVelocity -= (Vector2)transform.right * _impulseForce;
             //_rb2D.AddForce(transform.right * _impulseForce, ForceMode2D.Impulse);
         }
