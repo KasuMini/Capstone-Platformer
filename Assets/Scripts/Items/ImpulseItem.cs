@@ -47,7 +47,6 @@ namespace Items.Andrew
                 StartCoroutine(CoolDown());
             }
             _enumEvents[(int)CustomEvents.ImpulseSuccess]?.Invoke();
-            //_ammo--;
             _rb2D.linearVelocity -= (Vector2)transform.right * _impulseForce;
             //_rb2D.AddForce(transform.right * _impulseForce, ForceMode2D.Impulse);
         }
