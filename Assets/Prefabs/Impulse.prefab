@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 569308184993632338}
   - component: {fileID: 4680701276930974862}
   - component: {fileID: 3025378433083505933}
+  - component: {fileID: 847466124994584560}
   m_Layer: 0
   m_Name: Impulse
   m_TagString: Untagged
@@ -144,3 +145,39 @@ MonoBehaviour:
   _sprite: {fileID: 2691699993354977789}
   _flashColor: {r: 0.9764706, g: 0.2745098, b: 0.292835, a: 1}
   _flashTime: 0.1
+--- !u!58 &847466124994584560
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127972868532992787}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
