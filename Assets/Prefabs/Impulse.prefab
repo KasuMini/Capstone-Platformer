@@ -107,8 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9934ee8da9dcc24fba5de963852fbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Items.Andrew.ImpulseItem
-  _rb2D: {fileID: 0}
-  _impulseForce: 10
+  _impulseForce: 20
   _coolDownTime: 1
   _maxAmmo: 2
 --- !u!114 &4680701276930974862
