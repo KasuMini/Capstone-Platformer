@@ -14,6 +14,13 @@ public class ArmManager : MonoBehaviour
     [SerializeField] private ImpulseItem _rightArmItem;
     [SerializeField] private ImpulseItem _leftArmItem;
 
+    [SerializeField] private float maxTargetAngleDecay = 25f;
+    [SerializeField] private float minTargetAngleDecay = 1f;
+    [SerializeField] private float magnitudeForSnapAngle = 0.9f;
+    private float currentAngle;
+
+    private float angleVelocity = 0f;
+
 
     private void Awake()
     {
@@ -37,6 +44,13 @@ public class ArmManager : MonoBehaviour
         _playerInput.actions.FindAction("Right Trigger").performed -= RightArmTriggered;
     }
     */
+
+    //useful decay range is 1-25 - slow to fast
+    private float ExpDecay(float deltAngle, float targetAngle, float decay, float dt)
+    {
+        //b + (a - b) * Mathf.Exp(-decay * dt);
+        return targetAngle + deltAngle * Mathf.Exp(-decay * dt);
+    }
     private void Update()
     {
         //print(_leftArmInput.ReadValue<Vector2>());
@@ -47,8 +61,23 @@ public class ArmManager : MonoBehaviour
     
     private void SetDirection(Vector2 directionInput, Transform armPivotTransform)
     {
-        //should eventually include lerp towards the direction based on input magnitude
-        armPivotTransform.right = directionInput;
+        float magnitude = directionInput.magnitude;
+        if (magnitude > magnitudeForSnapAngle)
+        {
+            armPivotTransform.right = directionInput;
+            return;
+        }
+        //lerps toward direcgtion based on input magnitude
+        float targetAngle = Vector2.SignedAngle(Vector2.right, directionInput);
+        currentAngle = Vector2.SignedAngle(Vector2.right, armPivotTransform.right);
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+
+
+        float t = magnitude / magnitudeForSnapAngle;
+        float decay = Mathf.Lerp(minTargetAngleDecay, maxTargetAngleDecay, t);
+        float newAngle = ExpDecay(-deltaAngle, targetAngle, decay, Time.deltaTime);
+
+        armPivotTransform.eulerAngles = Vector3.forward * newAngle;
     }
     public void LeftArmTriggered(InputAction.CallbackContext context)
     {
