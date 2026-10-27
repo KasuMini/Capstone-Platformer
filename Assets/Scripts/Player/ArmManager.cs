@@ -5,45 +5,77 @@ using Items.Andrew;
 public class ArmManager : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private Rigidbody2D _rb2D;
     private InputAction _leftArmInput;
     private InputAction _rightArmInput;
 
     [SerializeField] private Transform _leftArmPivot;
     [SerializeField] private Transform _rightArmPivot;
 
-    [SerializeField] private ImpulseItem _rightArmItem;
-    [SerializeField] private ImpulseItem _leftArmItem;
+    private PlayerItem _rightArmItem;
+    private PlayerItem _leftArmItem;
+
+    [SerializeField] private PlayerItem _initRightArmItem;
+    [SerializeField] private PlayerItem _initLeftArmItem;
+
+    [SerializeField] private ItemManager _leftItemManager;
+    [SerializeField] private ItemManager _rightItemManager;
+
 
     [SerializeField] private float maxTargetAngleDecay = 25f;
     [SerializeField] private float minTargetAngleDecay = 1f;
     [SerializeField] private float magnitudeForSnapAngle = 0.9f;
     private float currentAngle;
 
-    private float angleVelocity = 0f;
-
-
     private void Awake()
     {
-
         _leftArmInput = _playerInput.actions.FindAction("Left Arm");
         _rightArmInput = _playerInput.actions.FindAction("Right Arm");
-        _rightArmItem.InitTriggerAction(_playerInput.actions.FindAction("Right Trigger"));
-        _leftArmItem.InitTriggerAction(_playerInput.actions.FindAction("Left Trigger"));
     }
-    /*
+    private void Start()
+    {
+        EquipLeft(_initLeftArmItem);
+        EquipRight(_initRightArmItem);
+    }
+
+    public void EquipRight(PlayerItem item)
+    {
+        if (_rightArmItem)
+        {
+            _rightArmItem.UnEquip();
+        }
+        item.Equip(_rightArmPivot, _rb2D);
+        _rightArmItem = item;
+    }
+    public void EquipLeft(PlayerItem item)
+    {
+        if (_leftArmItem)
+        {
+            _leftArmItem.UnEquip();
+        }
+        item.Equip(_leftArmPivot, _rb2D);
+        _leftArmItem = item;
+    }
+
     private void OnEnable()
     {
-        _playerInput.actions.FindAction("Left Trigger").performed += LeftArmTriggered;
-        _playerInput.actions.FindAction("Right Trigger").performed += RightArmTriggered;
+        _playerInput.actions.FindAction("Left Trigger").started += LeftArmTriggered;
+        _playerInput.actions.FindAction("Right Trigger").started += RightArmTriggered;
+
+        _playerInput.actions.FindAction("Left Bumper").started += LeftBumperTriggered;
+        _playerInput.actions.FindAction("Right Bumper").started += RightBumperTriggered;
 
 
     }
     private void OnDisable()
     {
-        _playerInput.actions.FindAction("Left Trigger").performed -= LeftArmTriggered;
-        _playerInput.actions.FindAction("Right Trigger").performed -= RightArmTriggered;
+        _playerInput.actions.FindAction("Left Trigger").started -= LeftArmTriggered;
+        _playerInput.actions.FindAction("Right Trigger").started -= RightArmTriggered;
+
+        _playerInput.actions.FindAction("Left Bumper").started -= LeftBumperTriggered;
+        _playerInput.actions.FindAction("Right Bumper").started -= RightBumperTriggered;
     }
-    */
+    
 
     //useful decay range is 1-25 - slow to fast
     private float ExpDecay(float deltAngle, float targetAngle, float decay, float dt)
@@ -81,11 +113,30 @@ public class ArmManager : MonoBehaviour
     }
     public void LeftArmTriggered(InputAction.CallbackContext context)
     {
+        _leftArmItem.TriggerAction();
+    }
+
+    public void LeftBumperTriggered(InputAction.CallbackContext context)
+    {
+        if (!_leftItemManager.ItemInCollider)
+        {
+            return;
+        }
+        EquipLeft(_leftItemManager.ItemInCollider);
     }
 
     //might be better just to pass in the input action when possessing item, so the item itself can control how it handles input
     public void RightArmTriggered(InputAction.CallbackContext context)
     {
-        //_rightArmItem.InputTriggered(context.ReadValue<float>());
+        _rightArmItem.TriggerAction();
+    }
+    public void RightBumperTriggered(InputAction.CallbackContext context)
+    {
+        print("RIGHT");
+        if (!_rightItemManager.ItemInCollider)
+        {
+            return;
+        }
+        EquipRight(_rightItemManager.ItemInCollider);
     }
 }
