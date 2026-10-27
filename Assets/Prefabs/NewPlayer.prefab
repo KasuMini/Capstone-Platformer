@@ -513,7 +513,6 @@ GameObject:
   - component: {fileID: 5142911045771229873}
   - component: {fileID: 33543326178411886}
   - component: {fileID: 307244896673008208}
-  - component: {fileID: 8665963856929221141}
   m_Layer: 0
   m_Name: PlayerPrototype
   m_TagString: Untagged
@@ -688,20 +687,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &8665963856929221141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3485137835260527598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5f3d95a416dae049b8abe420c65977b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
-  _armManager: {fileID: 0}
-  _playerInput: {fileID: 0}
 --- !u!1 &3759059240872048616
 GameObject:
   m_ObjectHideFlags: 0
